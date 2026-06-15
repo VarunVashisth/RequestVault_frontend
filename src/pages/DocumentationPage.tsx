@@ -411,10 +411,9 @@ response = requests.get(
 )`}</pre>
                   </div>
                   <ul className="space-y-2 text-vault-text-secondary list-disc list-inside ml-2">
-                    <li>Use dedicated production API keys</li>
+                    <li>Use dedicated  API key</li>
                     <li>Exclude internal health check endpoints</li>
                     <li>Limit payload collection where possible</li>
-                    <li>Rotate API keys periodically</li>
                     <li>Monitor only the traffic necessary for operational visibility</li>
                   </ul>
                 </div>
@@ -444,7 +443,7 @@ response = requests.get(
                   <div>
                     <h3 className="text-lg font-semibold text-vault-text mb-3">Missing Request Bodies</h3>
                     <p className="text-vault-text-secondary">
-                      Verify that payload collection is enabled:
+                      Verify that payload collection is enabled(they are true by default):
                     </p>
                     <div className="bg-vault-bg rounded-lg p-4 font-mono text-sm text-vault-accent overflow-x-auto mt-3">
                       <pre>{`capture_request_body=True
@@ -470,13 +469,13 @@ capture_response_body=True`}</pre>
                 </p>
                 <ul className="space-y-2 text-vault-accent">
                   <li>
-                    <a href="mailto:support@requestvault.io" className="hover:text-vault-accent-hover transition-colors">
-                      support@requestvault.io
+                    <a href="mailto:varizzup@gmail.com" className="hover:text-vault-accent-hover transition-colors">
+                      varizzup@gmail.com
                     </a>
                   </li>
                   <li>
-                    <a href="https://github.com/requestvault" className="hover:text-vault-accent-hover transition-colors">
-                      GitHub Community
+                    <a href="https://github.com/VarunVashisth" className="hover:text-vault-accent-hover transition-colors">
+                      GitHub 
                     </a>
                   </li>
                 </ul>
