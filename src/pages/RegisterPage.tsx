@@ -80,6 +80,8 @@ export default function RegisterPage() {
     
     }
 
+  }
+
   return (
     <PublicLayout>
       <div className="min-h-screen flex items-center justify-center px-6 py-12">
@@ -178,4 +180,4 @@ export default function RegisterPage() {
     </PublicLayout>
   )
 }
-}
+
