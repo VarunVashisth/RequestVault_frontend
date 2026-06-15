@@ -12,10 +12,10 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
             onClick={() => navigate('/')}
             className="flex items-center gap-2.5 hover:opacity-80 transition-opacity"
           >
-            <div className="w-8 h-8 bg-gradient-to-br from-vault-accent to-vault-accent-muted rounded flex items-center justify-center font-bold text-vault-bg text-sm">
-              V
-            </div>
-            <span className="text-base font-semibold text-vault-text">RequestVault</span>
+            <span  className="text-2xl font-semibold tracking-tight"
+             style={{  fontFamily: '"DM Serif Display", serif' }}
+             >
+              RequestVault</span>
           </button>
 
           <nav className="hidden md:flex items-center gap-8">

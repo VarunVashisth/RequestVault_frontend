@@ -86,10 +86,11 @@ export default function LandingPage() {
                   </li>
                 </ul>
               </div>
-              <div className="bg-vault-surface border border-vault-border rounded-lg p-8 h-80 flex items-center justify-center">
+              <div className="bg-vault-surface border border-vault-border rounded-lg p-8 h-80  flex items-center justify-center">
                 <div className="text-center">
-                  <Activity size={48} className="mx-auto text-vault-accent/40 mb-3" />
-                  <p className="text-vault-text-tertiary text-sm">Feature showcase</p>
+
+                  <img src = "src/public/feature1.png"/>
+
                 </div>
               </div>
             </div>
@@ -98,8 +99,7 @@ export default function LandingPage() {
             <div className="grid md:grid-cols-2 gap-8 items-start">
               <div className="bg-vault-surface border border-vault-border rounded-lg p-8 h-80 flex items-center justify-center order-2 md:order-1">
                 <div className="text-center">
-                  <BarChart3 size={48} className="mx-auto text-vault-accent/40 mb-3" />
-                  <p className="text-vault-text-tertiary text-sm">Feature showcase</p>
+                  <img src = "src/public/feature2.png"/>
                 </div>
               </div>
               <div className="order-1 md:order-2">
@@ -154,8 +154,7 @@ export default function LandingPage() {
               </div>
               <div className="bg-vault-surface border border-vault-border rounded-lg p-8 h-80 flex items-center justify-center">
                 <div className="text-center">
-                  <Lock size={48} className="mx-auto text-vault-accent/40 mb-3" />
-                  <p className="text-vault-text-tertiary text-sm">Feature showcase</p>
+                  <img src = "src/public/feature3.png"/>
                 </div>
               </div>
             </div>
@@ -164,8 +163,7 @@ export default function LandingPage() {
             <div className="grid md:grid-cols-2 gap-8 items-start">
               <div className="bg-vault-surface border border-vault-border rounded-lg p-8 h-80 flex items-center justify-center order-2 md:order-1">
                 <div className="text-center">
-                  <Code2 size={48} className="mx-auto text-vault-accent/40 mb-3" />
-                  <p className="text-vault-text-tertiary text-sm">Feature showcase</p>
+                  <img src = "src/public/feature4.png"/>
                 </div>
               </div>
               <div className="order-1 md:order-2">
