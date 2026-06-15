@@ -20,7 +20,7 @@ export default function DashboardPage() {
   
     const interval = setInterval(() => {
       fetchMetrics()
-    }, 5000)
+    }, 60000)
   
     return () => clearInterval(interval)
   }, [fetchMetrics])

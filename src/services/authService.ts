@@ -22,6 +22,19 @@ export interface RegisterResponse {
   api_key: string
 }
 
+export interface RequestOtpRequest {
+  username: string
+  email: string
+  password: string
+}
+
+export interface VerifyOtpRequest {
+  username: string
+  email: string
+  password: string
+  otp: string
+}
+
 export const authService = {
   login: async (data: LoginRequest): Promise<LoginResponse> => {
     const response = await api.post('/login', data)
@@ -40,5 +53,29 @@ export const authService = {
   getCurrentUser: async () => {
       const response = await api.get('/auth/me')
       return response.data
-  }
+  },
+
+  requestOtp: async (
+    data: RequestOtpRequest
+  ) => {
+  
+    const response = await api.post(
+      '/register/request-otp',
+      data
+    )
+  
+    return response.data
+  },
+
+  verifyOtp: async (
+    data: VerifyOtpRequest
+  ) => {
+  
+    const response = await api.post(
+      '/register/verify-otp',
+      data
+    )
+  
+    return response.data
+  },
 }

@@ -3,10 +3,11 @@ import { useNavigate, Link } from 'react-router-dom'
 import { useAuthStore } from '@/store/authStore'
 import PublicLayout from '@/components/layout/PublicLayout'
 import { Eye, EyeOff, Mail, Lock, User } from 'lucide-react'
+import { authService } from '@/services/authService'
 
 export default function RegisterPage() {
   const navigate = useNavigate()
-  const { register, loading, error: storeError } = useAuthStore()
+  const { login, loading, error: storeError } = useAuthStore()
 
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
@@ -15,30 +16,99 @@ export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState('')
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setError('')
+  const [otp, setOtp] = useState('')
+  const [otpSent, setOtpSent] = useState(false)
+  const [sendingOtp, setSendingOtp] = useState(false)
+  const [verifyingOtp, setVerifyingOtp] = useState(false)
 
+
+  const handleSendOtp = async () => {
+  
+    setError('')
+  
     if (password !== confirmPassword) {
       setError('Passwords do not match')
       return
     }
-
+  
     if (password.length < 8) {
       setError('Password must be at least 8 characters')
       return
     }
-
-    if (username.length < 3) {
-      setError('Username must be at least 3 characters')
-      return
-    }
-
+  
     try {
-      await register(username, email, password)
-      navigate('/dashboard')
+  
+      setSendingOtp(true)
+  
+      await authService.requestOtp({
+        username,
+        email,
+        password
+      })
+  
+      setOtpSent(true)
+  
     } catch (err: any) {
-      setError(err.response?.data?.detail || 'Registration failed')
+  
+      setError(
+        err.response?.data?.detail ||
+        'Failed to send verification code'
+      )
+  
+    } finally {
+  
+      setSendingOtp(false)
+  
+    }
+  }
+
+  const handleVerifyOtp = async () => {
+
+    setError('')
+  
+    try {
+  
+      setVerifyingOtp(true)
+  
+      await authService.verifyOtp({
+        username,
+        email,
+        password,
+        otp
+      })
+  
+      await login(
+        email,
+        password
+      )
+  
+      navigate('/dashboard')
+  
+    } catch (err: any) {
+  
+      setError(
+        err.response?.data?.detail ||
+        'Verification failed'
+      )
+  
+    } finally {
+  
+      setVerifyingOtp(false)
+  
+    }
+  }
+
+
+  const handleSubmit = (
+    e: React.FormEvent
+  ) => {
+  
+    e.preventDefault()
+  
+    if (!otpSent) {
+      handleSendOtp()
+    } else {
+      handleVerifyOtp()
     }
   }
 
@@ -130,14 +200,51 @@ export default function RegisterPage() {
                   />
                 </div>
               </div>
+              {/*otp*/}
+              {otpSent && (
+                <div>
+                  <label className="label-base mb-2 block">
+                    Verification Code
+                  </label>
+              
+                  <input
+                    type="text"
+                    value={otp}
+                    onChange={(e) =>
+                      setOtp(e.target.value)
+                    }
+                    placeholder="123456"
+                    maxLength={6}
+                    className="input-base w-full text-center tracking-[0.3em]"
+                    required
+                  />
+              
+                  <p className="text-xs text-vault-text-secondary mt-2">
+                    Verification code sent to {email}
+                  </p>
+                </div>
+              )}
 
               {/* Submit button */}
               <button
                 type="submit"
-                disabled={loading}
-                className="btn-primary w-full py-2.5 font-medium"
+                disabled={
+                  sendingOtp ||
+                  verifyingOtp
+                }
+                className="btn-primary w-full py-2.5"
               >
-                {loading ? 'Creating Account...' : 'Create Account'}
+                {!otpSent
+                  ? (
+                    sendingOtp
+                      ? 'Sending Code...'
+                      : 'Send Verification Code'
+                  )
+                  : (
+                    verifyingOtp
+                      ? 'Creating Account...'
+                      : 'Verify & Create Account'
+                  )}
               </button>
             </form>
 
