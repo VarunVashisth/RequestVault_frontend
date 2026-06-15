@@ -10,6 +10,8 @@ import RequestDetailPage from '@/pages/RequestDetailPage'
 import ApiKeysPage from '@/pages/ApiKeysPage'
 import DocumentationPage from '@/pages/DocumentationPage'
 import SettingsPage from '@/pages/SettingsPage'
+import PrivacyPolicyPage from './pages/privacy_policy'
+import TermsOfServicePage from './pages/terms_of_service'
 import { useEffect } from 'react'
 
 export default function App() {
@@ -29,6 +31,8 @@ export default function App() {
         <Route path="/login" element={!user ? <LoginPage /> : <Navigate to="/dashboard" />} />
         <Route path="/register" element={!user ? <RegisterPage /> : <Navigate to="/dashboard" />} />
         <Route path="/docs" element={<DocumentationPage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+        <Route path="/terms-of-service" element={<TermsOfServicePage />} />
 
         {/* Protected routes */}
         <Route element={<ProtectedRoute />}>

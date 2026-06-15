@@ -45,10 +45,10 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
         {/* Logo */}
         <div className="px-6 py-6 border-b border-vault-border">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 bg-gradient-to-br from-vault-accent to-vault-accent-muted rounded flex items-center justify-center font-bold text-vault-bg text-sm">
-              V
-            </div>
-            <span className="text-lg font-semibold text-vault-text">RequestVault</span>
+            <span  className="text-2xl font-semibold tracking-tight"
+             style={{  fontFamily: '"DM Serif Display", serif' }}
+             >
+              Request<span className="text-vault-accent">Vault</span></span>
           </div>
         </div>
 

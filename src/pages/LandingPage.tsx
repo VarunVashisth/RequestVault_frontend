@@ -87,9 +87,11 @@ export default function LandingPage() {
                 </ul>
               </div>
               <div className="bg-vault-surface border border-vault-border rounded-lg p-8 h-80  flex items-center justify-center">
-                <div className="text-center">
+                <div className="bg-vault-surface border border-vault-border rounded-lg p-8 h-80 flex items-center justify-center order-2 md:order-1 overflow-hidden relative w-full max-w-md">
 
-                  <img src = "src/public/feature1.png"/>
+                  <img src = "src/public/feature1.png"
+                  className="w-full h-full object-cover scale-125 transform"                  
+                  />
 
                 </div>
               </div>
@@ -98,8 +100,10 @@ export default function LandingPage() {
             {/* Feature 2 */}
             <div className="grid md:grid-cols-2 gap-8 items-start">
               <div className="bg-vault-surface border border-vault-border rounded-lg p-8 h-80 flex items-center justify-center order-2 md:order-1">
-                <div className="text-center">
-                  <img src = "src/public/feature2.png"/>
+                <div className="bg-vault-surface border border-vault-border rounded-lg p-8 h-80 flex items-center justify-center order-2 md:order-1 overflow-hidden relative w-full max-w-md">
+                  <img src = "src/public/feature2.png"
+                  className="w-full h-full object-cover scale-125 transform"
+                  />
                 </div>
               </div>
               <div className="order-1 md:order-2">
@@ -153,8 +157,10 @@ export default function LandingPage() {
                 </ul>
               </div>
               <div className="bg-vault-surface border border-vault-border rounded-lg p-8 h-80 flex items-center justify-center">
-                <div className="text-center">
-                  <img src = "src/public/feature3.png"/>
+                <div className="bg-vault-surface border border-vault-border rounded-lg p-8 h-80 flex items-center justify-center order-2 md:order-1 overflow-hidden relative w-full max-w-md">
+                  <img src = "src/public/feature3.png"
+                  className="w-full h-full object-cover scale-125 transform"
+                  />
                 </div>
               </div>
             </div>
@@ -162,8 +168,10 @@ export default function LandingPage() {
             {/* Feature 4 */}
             <div className="grid md:grid-cols-2 gap-8 items-start">
               <div className="bg-vault-surface border border-vault-border rounded-lg p-8 h-80 flex items-center justify-center order-2 md:order-1">
-                <div className="text-center">
-                  <img src = "src/public/feature4.png"/>
+                <div className="bg-vault-surface border border-vault-border rounded-lg p-8 h-80 flex items-center justify-center order-2 md:order-1 overflow-hidden relative w-full max-w-md">
+                  <img src = "src/public/feature4.png"
+                  className="w-full h-full object-cover scale-125 transform"
+                  />
                 </div>
               </div>
               <div className="order-1 md:order-2">
@@ -248,8 +256,112 @@ export default function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 px-8 border-t border-vault-border/50 text-center text-vault-text-tertiary text-sm">
-        <p>© 2024 RequestVault. Built with ❤️ for developers.</p>
+      {/* Footer */}
+      <footer className="border-t border-vault-border/50 mt-24">
+        <div className="max-w-6xl mx-auto px-8 py-12">
+      
+          <div className="grid md:grid-cols-4 gap-10 mb-10">
+      
+            {/* Brand */}
+            <div>
+              <h3
+                className="text-xl font-semibold tracking-tight text-vault-text mb-3"
+                style={{ fontFamily: '"DM Serif Display", serif' }}
+              >
+                Request<span className="text-vault-accent">Vault</span>
+              </h3>
+      
+              <p className="text-sm text-vault-text-secondary leading-relaxed">
+                API observability platform for monitoring, debugging,
+                and analyzing application traffic in real time.
+              </p>
+            </div>
+      
+            {/* Product */}
+            <div>
+              <h4 className="font-semibold text-vault-text mb-4">
+                Product
+              </h4>
+      
+              <div className="flex flex-col gap-2 text-sm">
+                <a href="#features" className="text-vault-text-secondary hover:text-vault-text transition-colors">
+                  Features
+                </a>
+      
+                <a href="/docs" className="text-vault-text-secondary hover:text-vault-text transition-colors">
+                  Documentation
+                </a>
+      
+                <a href="/dashboard" className="text-vault-text-secondary hover:text-vault-text transition-colors">
+                  Dashboard
+                </a>
+              </div>
+            </div>
+      
+            {/* Developers */}
+            <div>
+              <h4 className="font-semibold text-vault-text mb-4">
+                Developers
+              </h4>
+      
+              <div className="flex flex-col gap-2 text-sm">
+                <a href="/docs#sdk-configuration" className="text-vault-text-secondary hover:text-vault-text transition-colors">
+                  SDK Docs
+                </a>
+      
+                <a href="/docs" className="text-vault-text-secondary hover:text-vault-text transition-colors">
+                  API Reference
+                </a>
+      
+                <a
+                  href="https://github.com/VarunVashisth"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-vault-text-secondary hover:text-vault-text transition-colors"
+                >
+                  GitHub
+                </a>
+              </div>
+            </div>
+      
+            {/* Legal */}
+            <div>
+              <h4 className="font-semibold text-vault-text mb-4">
+                Legal
+              </h4>
+      
+              <div className="flex flex-col gap-2 text-sm">
+                <a href="/privacy-policy" className="text-vault-text-secondary hover:text-vault-text transition-colors">
+                  Privacy Policy
+                </a>
+      
+                <a href="/terms-of-service" className="text-vault-text-secondary hover:text-vault-text transition-colors">
+                  Terms of Service
+                </a>
+      
+                <a
+                  href="mailto:varizzup@gmail.com"
+                  className="text-vault-text-secondary hover:text-vault-text transition-colors"
+                >
+                  Contact
+                </a>
+              </div>
+            </div>
+      
+          </div>
+      
+          {/* Bottom Bar */}
+          <div className="pt-6 border-t border-vault-border/30 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-vault-text-tertiary">
+            <p>
+              © 2026 RequestVault. All rights reserved.
+            </p>
+      
+            <p>
+              Built by Varun Vashisth
+            </p>
+          </div>
+      
+        </div>
       </footer>
     </PublicLayout>
   )

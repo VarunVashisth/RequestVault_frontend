@@ -447,7 +447,7 @@ response = requests.get(
                     </p>
                     <div className="bg-vault-bg rounded-lg p-4 font-mono text-sm text-vault-accent overflow-x-auto mt-3">
                       <pre>{`capture_request_body=True
-capture_response_body=True`}</pre>
+                        capture_response_body=True`}</pre>
                     </div>
                   </div>
 

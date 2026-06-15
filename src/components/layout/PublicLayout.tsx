@@ -15,7 +15,9 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
             <span  className="text-2xl font-semibold tracking-tight"
              style={{  fontFamily: '"DM Serif Display", serif' }}
              >
-              RequestVault</span>
+              Request<span className="text-vault-accent">Vault
+              </span>
+              </span>
           </button>
 
           <nav className="hidden md:flex items-center gap-8">
