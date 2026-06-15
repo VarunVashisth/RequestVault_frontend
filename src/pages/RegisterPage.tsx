@@ -27,8 +27,8 @@ export default function RegisterPage() {
   
     setError('')
 
-    if (username.trim().length < 3) {
-      setError('Username must be at least 3 characters')
+    if (username.trim().length < 5) {
+      setError('Username must be at least 5 characters')
       return
     }
   
@@ -59,14 +59,26 @@ export default function RegisterPage() {
       navigate('/dashboard')
   
     } catch (err: any) {
-  
-      setError(
-        err.response?.data?.detail ||
-        'Registration failed'
-      )
-  
+
+      const detail = err.response?.data?.detail
+    
+      if (Array.isArray(detail)) {
+    
+        setError(
+          detail
+            .map((item: any) => item.msg)
+            .join(', ')
+        )
+    
+      } else {
+    
+        setError(
+          detail || 'Registration failed'
+        )
+    
+      }
+    
     }
-  }
 
   return (
     <PublicLayout>
