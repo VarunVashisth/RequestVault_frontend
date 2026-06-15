@@ -129,29 +129,7 @@ export default function ApiKeysPage() {
             </div>
           </div>
 
-          <div className="card bg-vault-accent/5 border-vault-accent/20">
-            <h3 className="text-base font-semibold text-vault-text mb-4">
-              How to use your API key
-            </h3>
-
-            <div className="space-y-4">
-              <p className="text-vault-text-secondary text-sm">
-                Include your API key when sending requests to RequestVault.
-              </p>
-
-              <div className="bg-vault-bg rounded p-4 font-mono text-xs text-vault-accent overflow-x-auto border border-vault-border">
-                curl -X POST http://localhost:8000/capture \
-                {'\n'}
-                -H "Content-Type: application/json" \
-                {'\n'}
-                -d '{`{"api_key":"YOUR_API_KEY"}`}'
-              </div>
-
-              <p className="text-vault-text-secondary text-xs font-semibold">
-                Never share your API key publicly.
-              </p>
-            </div>
-          </div>
+ 
         </>
       )}
     </div>
