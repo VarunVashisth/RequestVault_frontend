@@ -7,7 +7,7 @@ import { authService } from '@/services/authService'
 
 export default function RegisterPage() {
   const navigate = useNavigate()
-  const { login, loading, error: storeError } = useAuthStore()
+  const { login, error: storeError } = useAuthStore()
 
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')

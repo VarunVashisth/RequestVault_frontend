@@ -365,6 +365,7 @@ export default function RequestsPage() {
                 Cancel
               </button>
               <button
+                disabled={isDeleting}
                 onClick={() => {
                   if (showDeleteConfirm === 'single' && deletingId) {
                     handleDeleteRequest(deletingId)
@@ -376,7 +377,7 @@ export default function RequestsPage() {
                 }}
                 className="btn-primary px-4 py-2 bg-vault-danger hover:bg-vault-danger/80 disabled:opacity-50"
               >
-                Delete
+                {isDeleting? "Deleting...":"Delete"}
               </button>
             </div>
           </div>
