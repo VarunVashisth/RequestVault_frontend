@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-weight: 400;
+  background: #0f1117;
+  color: #e6edf3;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #e6edf3;
+}
+
+code,
+pre {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #30363d;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3d444d;
+}
+
+/* Selection */
+::selection {
+  background: #58a6ff;
+  color: #0f1117;
+}
+
+/* Focus visible */
+:focus-visible {
+  outline: 2px solid #58a6ff;
+  outline-offset: 2px;
+}
+
+/* Smooth transitions */
+@layer components {
+  .transition-smooth {
+    @apply transition-all duration-150 ease-out;
+  }
+
+  .btn-base {
+    @apply inline-flex items-center justify-center rounded font-medium focus-visible:outline-2 focus-visible:outline-offset-2 transition-smooth;
+  }
+
+  .btn-primary {
+    @apply btn-base bg-vault-accent text-vault-bg hover:bg-vault-accent-hover active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply btn-base bg-vault-surface border border-vault-border text-vault-text hover:bg-vault-surface-hover active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply btn-base text-vault-text-secondary hover:text-vault-text hover:bg-vault-border/30;
+  }
+
+  .card {
+    @apply bg-vault-surface border border-vault-border rounded px-6 py-5 transition-smooth;
+  }
+
+  .card-hover {
+    @apply card hover:border-vault-accent/50 hover:shadow-sm;
+  }
+
+  .input-base {
+    @apply bg-vault-surface border border-vault-border rounded px-3 py-2 text-vault-text placeholder-vault-text-tertiary focus:border-vault-accent focus:outline-none focus:ring-1 focus:ring-vault-accent/20 transition-smooth text-sm;
+  }
+
+  .label-base {
+    @apply text-xs font-medium text-vault-text-secondary uppercase tracking-wide;
+  }
+
+  .section-header {
+    @apply flex flex-col gap-1 mb-6;
+  }
+
+  .section-title {
+    @apply text-lg font-semibold text-vault-text;
+  }
+
+  .section-subtitle {
+    @apply text-sm text-vault-text-secondary;
+  }
+}
+
+/* Animations */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-slideDown {
+  animation: slideDown 0.2s ease-out;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out;
+}
