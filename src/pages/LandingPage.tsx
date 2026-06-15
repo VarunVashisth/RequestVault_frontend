@@ -44,7 +44,7 @@ export default function LandingPage() {
             <div className="h-120 bg-gradient-to-b from-vault-border/20 to-vault-border/5 flex items-center justify-center">
               <div className="text-center">
                 
-                <img src="src/public/dashboard.png" />
+                <img src="/dashboard.png" />
 
               </div>
             </div>
@@ -89,7 +89,7 @@ export default function LandingPage() {
               <div className="bg-vault-surface border border-vault-border rounded-lg p-8 h-80  flex items-center justify-center">
                 <div className="bg-vault-surface border border-vault-border rounded-lg p-8 h-80 flex items-center justify-center order-2 md:order-1 overflow-hidden relative w-full max-w-md">
 
-                  <img src = "src/public/feature1.png"
+                  <img src = "/feature1.png"
                   className="w-full h-full object-cover scale-125 transform"                  
                   />
 
@@ -101,7 +101,7 @@ export default function LandingPage() {
             <div className="grid md:grid-cols-2 gap-8 items-start">
               <div className="bg-vault-surface border border-vault-border rounded-lg p-8 h-80 flex items-center justify-center order-2 md:order-1">
                 <div className="bg-vault-surface border border-vault-border rounded-lg p-8 h-80 flex items-center justify-center order-2 md:order-1 overflow-hidden relative w-full max-w-md">
-                  <img src = "src/public/feature2.png"
+                  <img src = "/feature2.png"
                   className="w-full h-full object-cover scale-125 transform"
                   />
                 </div>
@@ -158,7 +158,7 @@ export default function LandingPage() {
               </div>
               <div className="bg-vault-surface border border-vault-border rounded-lg p-8 h-80 flex items-center justify-center">
                 <div className="bg-vault-surface border border-vault-border rounded-lg p-8 h-80 flex items-center justify-center order-2 md:order-1 overflow-hidden relative w-full max-w-md">
-                  <img src = "src/public/feature3.png"
+                  <img src = "/feature3.png"
                   className="w-full h-full object-cover scale-125 transform"
                   />
                 </div>
@@ -169,7 +169,7 @@ export default function LandingPage() {
             <div className="grid md:grid-cols-2 gap-8 items-start">
               <div className="bg-vault-surface border border-vault-border rounded-lg p-8 h-80 flex items-center justify-center order-2 md:order-1">
                 <div className="bg-vault-surface border border-vault-border rounded-lg p-8 h-80 flex items-center justify-center order-2 md:order-1 overflow-hidden relative w-full max-w-md">
-                  <img src = "src/public/feature4.png"
+                  <img src = "/feature4.png"
                   className="w-full h-full object-cover scale-125 transform"
                   />
                 </div>
