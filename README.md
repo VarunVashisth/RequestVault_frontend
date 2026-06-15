@@ -4,14 +4,14 @@ A production-ready API monitoring and observability dashboard built with React, 
 
 ## Features
 
-- 🎯 Real-time API request monitoring
-- 📊 Detailed analytics and metrics
-- 🔑 API key management
-- 📈 Request trend visualization
-- 🔐 Secure authentication
-- 📱 Fully responsive design
-- 🎨 Dark theme with professional UI
-- ⚡ Fast performance with modern tooling
+-  Real-time API request monitoring
+-  Detailed analytics and metrics
+-  API key management
+-  Request trend visualization
+-  Secure authentication
+-  Fully responsive design
+-  Dark theme with professional UI
+-  Fast performance with modern tooling
 
 ## Tech Stack
 
@@ -200,4 +200,4 @@ For issues and questions:
 
 ---
 
-Built with ❤️ for developers
+
