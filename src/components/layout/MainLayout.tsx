@@ -78,7 +78,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
         <div className="border-t border-vault-border p-3 space-y-3">
           <div className="px-4 py-3 bg-vault-border/30 rounded text-sm">
             <div className="text-xs text-vault-text-tertiary font-medium mb-1 uppercase tracking-wide">Signed in as</div>
-            <div className="text-sm font-medium text-vault-text truncate break-all">{user?.email}</div>
+            <div className="text-sm font-medium text-vault-text truncate break-all">{user?.username}</div>
           </div>
           <button
             onClick={handleLogout}

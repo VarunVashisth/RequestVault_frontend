@@ -2,29 +2,35 @@ import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useAuthStore } from '@/store/authStore'
 import PublicLayout from '@/components/layout/PublicLayout'
-import { Eye, EyeOff, Mail, Lock, User } from 'lucide-react'
-import { authService } from '@/services/authService'
+import { Eye, EyeOff, Lock, User } from 'lucide-react'
 
 export default function RegisterPage() {
   const navigate = useNavigate()
-  const { login, error: storeError } = useAuthStore()
+  const { register , login, error: storeError } = useAuthStore()
 
   const [username, setUsername] = useState('')
-  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState('')
 
-  const [otp, setOtp] = useState('')
-  const [otpSent, setOtpSent] = useState(false)
-  const [sendingOtp, setSendingOtp] = useState(false)
-  const [verifyingOtp, setVerifyingOtp] = useState(false)
 
 
-  const handleSendOtp = async () => {
+
+
+
+  const handleSubmit = async (
+    e: React.FormEvent
+  ) => {
+  
+    e.preventDefault()
   
     setError('')
+
+    if (username.trim().length < 3) {
+      setError('Username must be at least 3 characters')
+      return
+    }
   
     if (password !== confirmPassword) {
       setError('Passwords do not match')
@@ -32,53 +38,21 @@ export default function RegisterPage() {
     }
   
     if (password.length < 8) {
-      setError('Password must be at least 8 characters')
+      setError(
+        'Password must be at least 8 characters'
+      )
       return
     }
   
     try {
   
-      setSendingOtp(true)
-  
-      await authService.requestOtp({
+      await register(
         username,
-        email,
         password
-      })
-  
-      setOtpSent(true)
-  
-    } catch (err: any) {
-  
-      setError(
-        err.response?.data?.detail ||
-        'Failed to send verification code'
       )
   
-    } finally {
-  
-      setSendingOtp(false)
-  
-    }
-  }
-
-  const handleVerifyOtp = async () => {
-
-    setError('')
-  
-    try {
-  
-      setVerifyingOtp(true)
-  
-      await authService.verifyOtp({
-        username,
-        email,
-        password,
-        otp
-      })
-  
       await login(
-        email,
+        username,
         password
       )
   
@@ -88,27 +62,9 @@ export default function RegisterPage() {
   
       setError(
         err.response?.data?.detail ||
-        'Verification failed'
+        'Registration failed'
       )
   
-    } finally {
-  
-      setVerifyingOtp(false)
-  
-    }
-  }
-
-
-  const handleSubmit = (
-    e: React.FormEvent
-  ) => {
-  
-    e.preventDefault()
-  
-    if (!otpSent) {
-      handleSendOtp()
-    } else {
-      handleVerifyOtp()
     }
   }
 
@@ -146,21 +102,6 @@ export default function RegisterPage() {
                 </div>
               </div>
 
-              {/* Email */}
-              <div>
-                <label className="label-base mb-2 block">Email</label>
-                <div className="relative">
-                  <Mail className="absolute left-3 top-3 text-vault-text-secondary" size={18} />
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="you@example.com"
-                    className="input-base pl-10 w-full"
-                    required
-                  />
-                </div>
-              </div>
 
               {/* Password */}
               <div>
@@ -200,51 +141,13 @@ export default function RegisterPage() {
                   />
                 </div>
               </div>
-              {/*otp*/}
-              {otpSent && (
-                <div>
-                  <label className="label-base mb-2 block">
-                    Verification Code
-                  </label>
-              
-                  <input
-                    type="text"
-                    value={otp}
-                    onChange={(e) =>
-                      setOtp(e.target.value)
-                    }
-                    placeholder="123456"
-                    maxLength={6}
-                    className="input-base w-full text-center tracking-[0.3em]"
-                    required
-                  />
-              
-                  <p className="text-xs text-vault-text-secondary mt-2">
-                    Verification code sent to {email}
-                  </p>
-                </div>
-              )}
 
               {/* Submit button */}
               <button
                 type="submit"
-                disabled={
-                  sendingOtp ||
-                  verifyingOtp
-                }
                 className="btn-primary w-full py-2.5"
               >
-                {!otpSent
-                  ? (
-                    sendingOtp
-                      ? 'Sending Code...'
-                      : 'Send Verification Code'
-                  )
-                  : (
-                    verifyingOtp
-                      ? 'Creating Account...'
-                      : 'Verify & Create Account'
-                  )}
+                Create Account
               </button>
             </form>
 

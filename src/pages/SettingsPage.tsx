@@ -8,7 +8,6 @@ export default function SettingsPage() {
   const { user, logout } = useAuthStore()
 
   const [settings] = useState({
-    email: user?.email || '',
     username: user?.username || '',
   })
 
@@ -30,20 +29,6 @@ export default function SettingsPage() {
         <div>
           <h2 className="text-base font-semibold text-vault-text mb-6">Account Settings</h2>
           
-          {/* Email */}
-          <div className="mb-6">
-            <label className="label-base mb-2 block">Email Address</label>
-            <input
-              type="email"
-              value={settings.email}
-              disabled
-              className="input-base w-full opacity-60"
-              title="Email cannot be changed after registration"
-            />
-            <p className="text-xs text-vault-text-secondary mt-2">
-              Your email is used for account identification (cannot be changed)
-            </p>
-          </div>
 
           {/* Username */}
           <div>
@@ -63,7 +48,7 @@ export default function SettingsPage() {
 
         <div className="border-t border-vault-border pt-6 bg-vault-accent/5 -mx-6 -mb-5 px-6 py-4 rounded">
           <p className="text-xs text-vault-text-secondary">
-            Account details are managed at registration time. To update email or username, contact support or create a new account.
+            Account details are managed at registration time. To update  username, contact support or create a new account.
           </p>
         </div>
       </div>
@@ -72,7 +57,7 @@ export default function SettingsPage() {
       <div className="card">
         <h2 className="text-base font-semibold text-vault-text mb-3">API Key Management</h2>
         <p className="text-vault-text-secondary text-sm mb-4">
-          Manage your API credentials and generate new keys from the dedicated API Keys page.
+          Manage your API credential and regenerate new keys from the dedicated API Keys page.
         </p>
         <button
           onClick={() => navigate('/keys')}

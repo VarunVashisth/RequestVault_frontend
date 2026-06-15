@@ -2,13 +2,13 @@ import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useAuthStore } from '@/store/authStore'
 import PublicLayout from '@/components/layout/PublicLayout'
-import { Eye, EyeOff, Mail, Lock } from 'lucide-react'
+import { Eye, EyeOff, User, Lock } from 'lucide-react'
 
 export default function LoginPage() {
   const navigate = useNavigate()
   const { login, loading, error: storeError } = useAuthStore()
 
-  const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')  
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState('')
@@ -18,10 +18,10 @@ export default function LoginPage() {
     setError('')
 
     try {
-      await login(email, password)
+      await login(username, password)
       navigate('/dashboard')
     } catch (err: any) {
-      const errorMsg = err.response?.data?.detail || 'Invalid email or password'
+      const errorMsg = err.response?.data?.detail || 'Invalid username or password'
       setError(errorMsg)
     }
   }
@@ -44,16 +44,19 @@ export default function LoginPage() {
             )}
 
             <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Email */}
+              {/* Username */}
               <div>
-                <label className="label-base mb-2 block">Email</label>
+                <label className="label-base mb-2 block">Username</label>
                 <div className="relative">
-                  <Mail className="absolute left-3 top-3 text-vault-text-secondary" size={18} />
+                  <User
+                    className="absolute left-3 top-3 text-vault-text-secondary"
+                    size={18}
+                  />
                   <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="you@example.com"
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="your_username"
                     className="input-base pl-10 w-full"
                     required
                   />

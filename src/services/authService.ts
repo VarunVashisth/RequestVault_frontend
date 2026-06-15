@@ -1,13 +1,12 @@
 import api from './api'
 
 export interface LoginRequest {
-  email: string
+  username: string
   password: string
 }
 
 export interface RegisterRequest {
   username: string
-  email: string
   password: string
 }
 
@@ -18,22 +17,12 @@ export interface LoginResponse {
 
 export interface RegisterResponse {
   username: string
-  email: string
   api_key: string
 }
 
-export interface RequestOtpRequest {
-  username: string
-  email: string
-  password: string
-}
 
-export interface VerifyOtpRequest {
-  username: string
-  email: string
-  password: string
-  otp: string
-}
+
+
 
 export const authService = {
   login: async (data: LoginRequest): Promise<LoginResponse> => {
@@ -55,27 +44,5 @@ export const authService = {
       return response.data
   },
 
-  requestOtp: async (
-    data: RequestOtpRequest
-  ) => {
-  
-    const response = await api.post(
-      '/register/request-otp',
-      data
-    )
-  
-    return response.data
-  },
 
-  verifyOtp: async (
-    data: VerifyOtpRequest
-  ) => {
-  
-    const response = await api.post(
-      '/register/verify-otp',
-      data
-    )
-  
-    return response.data
-  },
 }
