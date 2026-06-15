@@ -33,7 +33,7 @@ export default function PrivacyPolicyPage() {
               </h2>
 
               <ul className="list-disc list-inside space-y-2">
-                <li>Account information such as username and email address.</li>
+                <li>Account information such as username.</li>
                 <li>API monitoring data transmitted through the RequestVault SDK.</li>
                 <li>Request metadata including endpoints, methods, status codes, and response times.</li>
                 <li>Authentication information required to access the platform.</li>
