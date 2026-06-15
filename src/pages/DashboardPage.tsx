@@ -17,6 +17,12 @@ export default function DashboardPage() {
 
   useEffect(() => {
     fetchMetrics()
+  
+    const interval = setInterval(() => {
+      fetchMetrics()
+    }, 5000)
+  
+    return () => clearInterval(interval)
   }, [fetchMetrics])
 
   if (loading || !metrics) {
@@ -31,21 +37,7 @@ export default function DashboardPage() {
     ? Math.round((metrics.success_requests / metrics.total_requests) * 100)
     : 0
 
-  // Format response times chart data from last 7 days
-  const responseTrendData = metrics.responseTimesByDate
-    .slice(-7)
-    .map(item => ({
-      name: new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
-      avgTime: Math.round(item.avg_response_time),
-    }))
 
-  // Format request volume chart data from last 7 days
-  const volumeTrendData = metrics.requestVolumeByDate
-    .slice(-7)
-    .map(item => ({
-      name: new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
-      count: item.count,
-    }))
 
   // Combine for a dual-metric trend chart
   const trendData = metrics.requestVolumeByDate

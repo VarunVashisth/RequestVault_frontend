@@ -20,7 +20,6 @@ export default function RequestsPage() {
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc')
   const [loading, setLoading] = useState(false)
   const [hasMore, setHasMore] = useState(true)
-  const [totalCount, setTotalCount] = useState(0)
   const [showDeleteConfirm, setShowDeleteConfirm] = useState<'single' | 'failed' | 'all' | null>(null)
   const [deletingId, setDeletingId] = useState<number | string | null>(null)
   const [isDeleting , setIsDeleting] = useState(false)
@@ -65,7 +64,16 @@ export default function RequestsPage() {
   useEffect(() => {
     setCursor(null)
     fetchRequests(null)
+    
   }, [search, methodFilter, statusFilter, sortOrder])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetchRequests(null)
+    }, 5000)
+  
+    return () => clearInterval(interval)
+  }, [])
 
   const handleDeleteRequest = async (id: number | string) => {
     setIsDeleting(true)
@@ -289,7 +297,7 @@ export default function RequestsPage() {
                             </button>
                             <button
                               onClick={() => {
-                                setDeletingId(request.id)
+                                setDeletingId(request.id ?? null)
                                 setShowDeleteConfirm('single')
                               }}
                               className="text-vault-danger hover:text-vault-danger text-xs font-medium"
